@@ -3,10 +3,16 @@ using CarDealership.Models;
 namespace CarDealership
 {
     public partial class CarsForm : Form {
+        private NewCarForm newCarForm;
 
         public List<Car> cars = new List<Car>();
+
+
         public CarsForm() {
             InitializeComponent();
+
+            newCarForm = new NewCarForm();
+            //tabPage1.Controls.Add(newCarForm);
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -74,9 +80,9 @@ namespace CarDealership
         }
 
         private void ClientsChangeForm_Click(object sender, EventArgs e) {
-            Hide();
+            //Hide();
             ClientsForm c = new ClientsForm();
-            c.Show();
+            c.ShowDialog();
         }
 
         private void carsGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {

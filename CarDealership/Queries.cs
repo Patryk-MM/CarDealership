@@ -6,8 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarDealership
-{
+namespace CarDealership {
     public class Queries {
         public static Car? GetFirstCar(string brand) {
             using (Database db = new Database()) {
@@ -22,6 +21,36 @@ namespace CarDealership
             }
 
         }
+
+        public static List<string> GetCarBrands() {
+            using (Database db = new Database()) {
+
+                List<string>? brands = db.Cars?
+                   .Select(p => p.Brand).Distinct().ToList();
+
+                if (brands is null || !brands.Any()) {
+                    return null;
+                }
+
+                return brands;
+            }
+        }
+
+        public static List<string> GetCarModelsByBrand(string brand) {
+                using (Database db = new Database()) {
+
+                    List<string>? models = db.Cars?
+                       .Where(p => p.Brand == brand)
+                       .Select(p => p.Model).Distinct().ToList();
+
+                    if (models is null || !models.Any()) {
+                        return new List<string>();
+                    }
+
+                    return models;
+                }
+        }
+
         public static List<Car>? GetCarsByBrand(string brand) {
             using (Database db = new Database()) {
                 List<Car>? cars = db.Cars?
@@ -62,7 +91,7 @@ namespace CarDealership
             }
         }
 
-        public static List<Installment>? GetInstallmentsByInsuranceID (int id) {
+        public static List<Installment>? GetInstallmentsByInsuranceID(int id) {
             using (Database db = new Database()) {
                 List<Installment>? installments = db.InsuranceInstallments?
                     .Where(i => i.InsuranceID == id)
