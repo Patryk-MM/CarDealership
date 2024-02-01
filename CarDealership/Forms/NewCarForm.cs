@@ -41,7 +41,7 @@ namespace CarDealership {
                 newCar.Brand = brandTextBox.Text;
                 newCar.Model = modelTextBox.Text;
                 newCar.ProductionYear = Convert.ToInt32(yearTextBox.Text);
-                newCar.EngineCapacity = Convert.ToDecimal(engineCapacityTextBox.Text);
+                newCar.EngineCapacity = Convert.ToInt32(engineCapacityTextBox.Text);
                 newCar.Power = Convert.ToInt32(powerTextBox.Text);
                 newCar.Mileage = Convert.ToInt32(mileageTextBox.Text);
                 newCar.FuelType = fuelTypeDropDown.SelectedItem.ToString();

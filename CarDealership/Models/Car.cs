@@ -13,7 +13,7 @@ namespace CarDealership.Models
         public string Brand { get; set; }
         public string Model { get; set; }
         public int ProductionYear { get; set; }
-        public decimal EngineCapacity { get; set; }
+        public int EngineCapacity { get; set; }
         public int Power {  get; set; }
         public int Mileage { get; set; }
         public string FuelType { get; set; }

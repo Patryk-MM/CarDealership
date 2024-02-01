@@ -37,18 +37,109 @@ namespace CarDealership {
         }
 
         public static List<string> GetCarModelsByBrand(string brand) {
-                using (Database db = new Database()) {
+            using (Database db = new Database()) {
 
-                    List<string>? models = db.Cars?
-                       .Where(p => p.Brand == brand)
-                       .Select(p => p.Model).Distinct().ToList();
+                List<string>? models = db.Cars?
+                   .Where(p => p.Brand == brand)
+                   .Select(p => p.Model).Distinct().ToList();
 
-                    if (models is null || !models.Any()) {
-                        return new List<string>();
-                    }
-
-                    return models;
+                if (models is null || !models.Any()) {
+                    return new List<string>();
                 }
+
+                return models;
+            }
+        }
+
+        public static List<string> GetFuelTypes() {
+            using (Database db = new Database()) {
+                List<string>? brands = db.Cars?
+                   .Select(p => p.FuelType).Distinct().ToList();
+
+                if (brands is null || !brands.Any()) {
+                    return null;
+                }
+
+                return brands;
+            }
+        }
+
+        public static List<string> GetDrivetrainTypes() {
+            using (Database db = new Database()) {
+                List<string>? brands = db.Cars?
+                   .Select(p => p.Drivetrain).Distinct().ToList();
+
+                if (brands is null || !brands.Any()) {
+                    return null;
+                }
+
+                return brands;
+            }
+        }
+
+        public static List<string> GetTransmissionTypes() {
+            using (Database db = new Database()) {
+                List<string>? brands = db.Cars?
+                   .Select(p => p.Transmission).Distinct().ToList();
+
+                if (brands is null || !brands.Any()) {
+                    return null;
+                }
+
+                return brands;
+            }
+        }
+
+        public static List<string> GetBodyTypes() {
+            using (Database db = new Database()) {
+                List<string>? brands = db.Cars?
+                   .Select(p => p.BodyType).Distinct().ToList();
+
+                if (brands is null || !brands.Any()) {
+                    return null;
+                }
+
+                return brands;
+            }
+        }
+
+        public static List<string> GetColors() {
+            using (Database db = new Database()) {
+                List<string>? brands = db.Cars?
+                   .Select(p => p.Color).Distinct().ToList();
+
+                if (brands is null || !brands.Any()) {
+                    return null;
+                }
+
+                return brands;
+            }
+        }
+
+        public static List<string> GetSteeringWheelPosition() {
+            using (Database db = new Database()) {
+                List<string>? brands = db.Cars?
+                   .Select(p => p.SteeringWheelPosition).Distinct().ToList();
+
+                if (brands is null || !brands.Any()) {
+                    return null;
+                }
+
+                return brands;
+            }
+        }
+
+        public static List<string> GetCondition() {
+            using (Database db = new Database()) {
+                List<string>? brands = db.Cars?
+                   .Select(p => p.TechnicalCondition).Distinct().ToList();
+
+                if (brands is null || !brands.Any()) {
+                    return null;
+                }
+
+                return brands;
+            }
         }
 
         public static List<Car>? GetCarsByBrand(string brand) {

@@ -44,16 +44,16 @@
             label7 = new Label();
             fuelComboBox = new ComboBox();
             label8 = new Label();
-            comboBox1 = new ComboBox();
+            drivetrainComboBox = new ComboBox();
             label9 = new Label();
-            comboBox2 = new ComboBox();
+            transmissionComboBox = new ComboBox();
             label10 = new Label();
-            comboBox3 = new ComboBox();
+            colorComboBox = new ComboBox();
             label11 = new Label();
-            comboBox4 = new ComboBox();
+            steeringWheelComboBox = new ComboBox();
             label12 = new Label();
-            comboBox5 = new ComboBox();
-            label13 = new Label();
+            conditionComboBox = new ComboBox();
+            resultLabel = new Label();
             carsDataGrid = new DataGridView();
             carIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             brandDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -71,8 +71,10 @@
             technicalConditionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dealershipIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             carBindingSource = new BindingSource(components);
-            filterButton = new Button();
+            applyFilterButton = new Button();
             clearFilters = new Button();
+            label13 = new Label();
+            bodyTypeComboBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)carsDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)carBindingSource).BeginInit();
             SuspendLayout();
@@ -111,6 +113,8 @@
             // 
             // modelComboBox
             // 
+            modelComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            modelComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             modelComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             modelComboBox.FormattingEnabled = true;
             modelComboBox.Location = new Point(208, 103);
@@ -174,7 +178,7 @@
             // 
             engCapToComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             engCapToComboBox.FormattingEnabled = true;
-            engCapToComboBox.Items.AddRange(new object[] { "1,0", "1,2", "1,4", "1,6", "1,8", "2,0", "2,2", "2,4", "2,6", "2,8", "3,0" });
+            engCapToComboBox.Items.AddRange(new object[] { "1000", "1200", "1400", "1600", "1800", "2000", "2200", "2400", "2600", "2800", "3000" });
             engCapToComboBox.Location = new Point(655, 103);
             engCapToComboBox.Name = "engCapToComboBox";
             engCapToComboBox.Size = new Size(80, 33);
@@ -185,7 +189,7 @@
             // 
             engCapFromComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             engCapFromComboBox.FormattingEnabled = true;
-            engCapFromComboBox.Items.AddRange(new object[] { "1,0", "1,2", "1,4", "1,6", "1,8", "2,0", "2,2", "2,4", "2,6", "2,8", "3,0" });
+            engCapFromComboBox.Items.AddRange(new object[] { "1000", "1200", "1400", "1600", "1800", "2000", "2200", "2400", "2600", "2800", "3000" });
             engCapFromComboBox.Location = new Point(569, 103);
             engCapFromComboBox.Name = "engCapFromComboBox";
             engCapFromComboBox.Size = new Size(80, 33);
@@ -281,14 +285,14 @@
             label8.TabIndex = 44;
             label8.Text = "Drivetrain";
             // 
-            // comboBox1
+            // drivetrainComboBox
             // 
-            comboBox1.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(1351, 103);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(163, 33);
-            comboBox1.TabIndex = 43;
+            drivetrainComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            drivetrainComboBox.FormattingEnabled = true;
+            drivetrainComboBox.Location = new Point(1351, 103);
+            drivetrainComboBox.Name = "drivetrainComboBox";
+            drivetrainComboBox.Size = new Size(163, 33);
+            drivetrainComboBox.TabIndex = 43;
             // 
             // label9
             // 
@@ -300,92 +304,97 @@
             label9.TabIndex = 46;
             label9.Text = "Transmission";
             // 
-            // comboBox2
+            // transmissionComboBox
             // 
-            comboBox2.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(30, 172);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(163, 33);
-            comboBox2.TabIndex = 45;
+            transmissionComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            transmissionComboBox.FormattingEnabled = true;
+            transmissionComboBox.Location = new Point(30, 172);
+            transmissionComboBox.Name = "transmissionComboBox";
+            transmissionComboBox.Size = new Size(163, 33);
+            transmissionComboBox.TabIndex = 45;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label10.Location = new Point(208, 144);
+            label10.Location = new Point(387, 144);
             label10.Name = "label10";
             label10.Size = new Size(60, 25);
             label10.TabIndex = 48;
             label10.Text = "Color";
             // 
-            // comboBox3
+            // colorComboBox
             // 
-            comboBox3.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(208, 172);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(163, 33);
-            comboBox3.TabIndex = 47;
+            colorComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            colorComboBox.FormattingEnabled = true;
+            colorComboBox.Location = new Point(387, 172);
+            colorComboBox.Name = "colorComboBox";
+            colorComboBox.Size = new Size(163, 33);
+            colorComboBox.TabIndex = 47;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label11.Location = new Point(387, 144);
+            label11.Location = new Point(566, 144);
             label11.Name = "label11";
             label11.Size = new Size(152, 25);
             label11.TabIndex = 50;
             label11.Text = "Steering wheel";
             // 
-            // comboBox4
+            // steeringWheelComboBox
             // 
-            comboBox4.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(387, 172);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(163, 33);
-            comboBox4.TabIndex = 49;
+            steeringWheelComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            steeringWheelComboBox.FormattingEnabled = true;
+            steeringWheelComboBox.Location = new Point(566, 172);
+            steeringWheelComboBox.Name = "steeringWheelComboBox";
+            steeringWheelComboBox.Size = new Size(163, 33);
+            steeringWheelComboBox.TabIndex = 49;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label12.Location = new Point(572, 144);
+            label12.Location = new Point(751, 144);
             label12.Name = "label12";
             label12.Size = new Size(100, 25);
             label12.TabIndex = 52;
             label12.Text = "Condition";
             // 
-            // comboBox5
+            // conditionComboBox
             // 
-            comboBox5.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(572, 172);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(163, 33);
-            comboBox5.TabIndex = 51;
+            conditionComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            conditionComboBox.FormattingEnabled = true;
+            conditionComboBox.Location = new Point(751, 172);
+            conditionComboBox.Name = "conditionComboBox";
+            conditionComboBox.Size = new Size(163, 33);
+            conditionComboBox.TabIndex = 51;
             // 
-            // label13
+            // resultLabel
             // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Tahoma", 36F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            label13.Location = new Point(0, 254);
-            label13.Name = "label13";
-            label13.Size = new Size(179, 58);
-            label13.TabIndex = 53;
-            label13.Text = "Result";
+            resultLabel.AutoSize = true;
+            resultLabel.Font = new Font("Tahoma", 36F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            resultLabel.Location = new Point(0, 254);
+            resultLabel.Name = "resultLabel";
+            resultLabel.Size = new Size(179, 58);
+            resultLabel.TabIndex = 53;
+            resultLabel.Text = "Result";
             // 
             // carsDataGrid
             // 
+            carsDataGrid.AllowUserToAddRows = false;
+            carsDataGrid.AllowUserToDeleteRows = false;
+            carsDataGrid.AllowUserToResizeRows = false;
             carsDataGrid.AutoGenerateColumns = false;
             carsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             carsDataGrid.Columns.AddRange(new DataGridViewColumn[] { carIDDataGridViewTextBoxColumn, brandDataGridViewTextBoxColumn, modelDataGridViewTextBoxColumn, productionYearDataGridViewTextBoxColumn, engineCapacityDataGridViewTextBoxColumn, powerDataGridViewTextBoxColumn, mileageDataGridViewTextBoxColumn, fuelTypeDataGridViewTextBoxColumn, drivetrainDataGridViewTextBoxColumn, transmissionDataGridViewTextBoxColumn, bodyTypeDataGridViewTextBoxColumn, colorDataGridViewTextBoxColumn, steeringWheelPositionDataGridViewTextBoxColumn, technicalConditionDataGridViewTextBoxColumn, dealershipIDDataGridViewTextBoxColumn });
             carsDataGrid.DataSource = carBindingSource;
             carsDataGrid.Location = new Point(30, 332);
             carsDataGrid.Name = "carsDataGrid";
+            carsDataGrid.ReadOnly = true;
             carsDataGrid.Size = new Size(1484, 323);
             carsDataGrid.TabIndex = 54;
+            carsDataGrid.DataSourceChanged += carsDataGrid_DataSourceChanged;
             carsDataGrid.CellMouseDoubleClick += carsDataGrid_CellMouseDoubleClick;
             // 
             // carIDDataGridViewTextBoxColumn
@@ -393,109 +402,124 @@
             carIDDataGridViewTextBoxColumn.DataPropertyName = "CarID";
             carIDDataGridViewTextBoxColumn.HeaderText = "CarID";
             carIDDataGridViewTextBoxColumn.Name = "carIDDataGridViewTextBoxColumn";
+            carIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // brandDataGridViewTextBoxColumn
             // 
             brandDataGridViewTextBoxColumn.DataPropertyName = "Brand";
             brandDataGridViewTextBoxColumn.HeaderText = "Brand";
             brandDataGridViewTextBoxColumn.Name = "brandDataGridViewTextBoxColumn";
+            brandDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // modelDataGridViewTextBoxColumn
             // 
             modelDataGridViewTextBoxColumn.DataPropertyName = "Model";
             modelDataGridViewTextBoxColumn.HeaderText = "Model";
             modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
+            modelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // productionYearDataGridViewTextBoxColumn
             // 
             productionYearDataGridViewTextBoxColumn.DataPropertyName = "ProductionYear";
             productionYearDataGridViewTextBoxColumn.HeaderText = "ProductionYear";
             productionYearDataGridViewTextBoxColumn.Name = "productionYearDataGridViewTextBoxColumn";
+            productionYearDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // engineCapacityDataGridViewTextBoxColumn
             // 
             engineCapacityDataGridViewTextBoxColumn.DataPropertyName = "EngineCapacity";
             engineCapacityDataGridViewTextBoxColumn.HeaderText = "EngineCapacity";
             engineCapacityDataGridViewTextBoxColumn.Name = "engineCapacityDataGridViewTextBoxColumn";
+            engineCapacityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // powerDataGridViewTextBoxColumn
             // 
             powerDataGridViewTextBoxColumn.DataPropertyName = "Power";
             powerDataGridViewTextBoxColumn.HeaderText = "Power";
             powerDataGridViewTextBoxColumn.Name = "powerDataGridViewTextBoxColumn";
+            powerDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // mileageDataGridViewTextBoxColumn
             // 
             mileageDataGridViewTextBoxColumn.DataPropertyName = "Mileage";
             mileageDataGridViewTextBoxColumn.HeaderText = "Mileage";
             mileageDataGridViewTextBoxColumn.Name = "mileageDataGridViewTextBoxColumn";
+            mileageDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fuelTypeDataGridViewTextBoxColumn
             // 
             fuelTypeDataGridViewTextBoxColumn.DataPropertyName = "FuelType";
             fuelTypeDataGridViewTextBoxColumn.HeaderText = "FuelType";
             fuelTypeDataGridViewTextBoxColumn.Name = "fuelTypeDataGridViewTextBoxColumn";
+            fuelTypeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // drivetrainDataGridViewTextBoxColumn
             // 
             drivetrainDataGridViewTextBoxColumn.DataPropertyName = "Drivetrain";
             drivetrainDataGridViewTextBoxColumn.HeaderText = "Drivetrain";
             drivetrainDataGridViewTextBoxColumn.Name = "drivetrainDataGridViewTextBoxColumn";
+            drivetrainDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // transmissionDataGridViewTextBoxColumn
             // 
             transmissionDataGridViewTextBoxColumn.DataPropertyName = "Transmission";
             transmissionDataGridViewTextBoxColumn.HeaderText = "Transmission";
             transmissionDataGridViewTextBoxColumn.Name = "transmissionDataGridViewTextBoxColumn";
+            transmissionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bodyTypeDataGridViewTextBoxColumn
             // 
             bodyTypeDataGridViewTextBoxColumn.DataPropertyName = "BodyType";
             bodyTypeDataGridViewTextBoxColumn.HeaderText = "BodyType";
             bodyTypeDataGridViewTextBoxColumn.Name = "bodyTypeDataGridViewTextBoxColumn";
+            bodyTypeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // colorDataGridViewTextBoxColumn
             // 
             colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
             colorDataGridViewTextBoxColumn.HeaderText = "Color";
             colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            colorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // steeringWheelPositionDataGridViewTextBoxColumn
             // 
             steeringWheelPositionDataGridViewTextBoxColumn.DataPropertyName = "SteeringWheelPosition";
             steeringWheelPositionDataGridViewTextBoxColumn.HeaderText = "SteeringWheelPosition";
             steeringWheelPositionDataGridViewTextBoxColumn.Name = "steeringWheelPositionDataGridViewTextBoxColumn";
+            steeringWheelPositionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // technicalConditionDataGridViewTextBoxColumn
             // 
             technicalConditionDataGridViewTextBoxColumn.DataPropertyName = "TechnicalCondition";
             technicalConditionDataGridViewTextBoxColumn.HeaderText = "TechnicalCondition";
             technicalConditionDataGridViewTextBoxColumn.Name = "technicalConditionDataGridViewTextBoxColumn";
+            technicalConditionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dealershipIDDataGridViewTextBoxColumn
             // 
             dealershipIDDataGridViewTextBoxColumn.DataPropertyName = "DealershipID";
             dealershipIDDataGridViewTextBoxColumn.HeaderText = "DealershipID";
             dealershipIDDataGridViewTextBoxColumn.Name = "dealershipIDDataGridViewTextBoxColumn";
+            dealershipIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // carBindingSource
             // 
             carBindingSource.DataSource = typeof(Models.Car);
             // 
-            // filterButton
+            // applyFilterButton
             // 
-            filterButton.BackColor = Color.Transparent;
-            filterButton.FlatAppearance.BorderSize = 0;
-            filterButton.FlatAppearance.MouseOverBackColor = Color.MediumSlateBlue;
-            filterButton.FlatStyle = FlatStyle.Flat;
-            filterButton.Font = new Font("Tahoma", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            filterButton.Location = new Point(1298, 172);
-            filterButton.Name = "filterButton";
-            filterButton.Size = new Size(216, 78);
-            filterButton.TabIndex = 55;
-            filterButton.Text = "Apply filters";
-            filterButton.UseVisualStyleBackColor = false;
-            filterButton.Click += filterButton_Click;
+            applyFilterButton.BackColor = Color.Transparent;
+            applyFilterButton.FlatAppearance.BorderSize = 0;
+            applyFilterButton.FlatAppearance.MouseOverBackColor = Color.MediumSlateBlue;
+            applyFilterButton.FlatStyle = FlatStyle.Flat;
+            applyFilterButton.Font = new Font("Tahoma", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            applyFilterButton.Location = new Point(1298, 172);
+            applyFilterButton.Name = "applyFilterButton";
+            applyFilterButton.Size = new Size(216, 78);
+            applyFilterButton.TabIndex = 55;
+            applyFilterButton.Text = "Apply filters";
+            applyFilterButton.UseVisualStyleBackColor = false;
+            applyFilterButton.Click += filterButton_Click;
             // 
             // clearFilters
             // 
@@ -512,24 +536,45 @@
             clearFilters.UseVisualStyleBackColor = false;
             clearFilters.Click += clearFilters_Click;
             // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label13.Location = new Point(208, 144);
+            label13.Name = "label13";
+            label13.Size = new Size(105, 25);
+            label13.TabIndex = 58;
+            label13.Text = "Body type";
+            // 
+            // bodyTypeComboBox
+            // 
+            bodyTypeComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            bodyTypeComboBox.FormattingEnabled = true;
+            bodyTypeComboBox.Location = new Point(208, 172);
+            bodyTypeComboBox.Name = "bodyTypeComboBox";
+            bodyTypeComboBox.Size = new Size(163, 33);
+            bodyTypeComboBox.TabIndex = 57;
+            // 
             // UC_Cars
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(clearFilters);
-            Controls.Add(filterButton);
-            Controls.Add(carsDataGrid);
             Controls.Add(label13);
+            Controls.Add(bodyTypeComboBox);
+            Controls.Add(clearFilters);
+            Controls.Add(applyFilterButton);
+            Controls.Add(carsDataGrid);
+            Controls.Add(resultLabel);
             Controls.Add(label12);
-            Controls.Add(comboBox5);
+            Controls.Add(conditionComboBox);
             Controls.Add(label11);
-            Controls.Add(comboBox4);
+            Controls.Add(steeringWheelComboBox);
             Controls.Add(label10);
-            Controls.Add(comboBox3);
+            Controls.Add(colorComboBox);
             Controls.Add(label9);
-            Controls.Add(comboBox2);
+            Controls.Add(transmissionComboBox);
             Controls.Add(label8);
-            Controls.Add(comboBox1);
+            Controls.Add(drivetrainComboBox);
             Controls.Add(label7);
             Controls.Add(fuelComboBox);
             Controls.Add(label6);
@@ -580,16 +625,16 @@
         private Label label7;
         private ComboBox fuelComboBox;
         private Label label8;
-        private ComboBox comboBox1;
+        private ComboBox drivetrainComboBox;
         private Label label9;
-        private ComboBox comboBox2;
+        private ComboBox transmissionComboBox;
         private Label label10;
-        private ComboBox comboBox3;
+        private ComboBox colorComboBox;
         private Label label11;
-        private ComboBox comboBox4;
+        private ComboBox steeringWheelComboBox;
         private Label label12;
-        private ComboBox comboBox5;
-        private Label label13;
+        private ComboBox conditionComboBox;
+        private Label resultLabel;
         private DataGridView carsDataGrid;
         private DataGridViewTextBoxColumn carIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn brandDataGridViewTextBoxColumn;
@@ -607,7 +652,9 @@
         private DataGridViewTextBoxColumn technicalConditionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dealershipIDDataGridViewTextBoxColumn;
         private BindingSource carBindingSource;
-        private Button filterButton;
+        private Button applyFilterButton;
         private Button clearFilters;
+        private Label label13;
+        private ComboBox bodyTypeComboBox;
     }
 }
