@@ -22,6 +22,13 @@ namespace CarDealership.Forms {
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
+        private void topPanel_MouseMove(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Left) {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
         public MainForm() {
             InitializeComponent();
             UC_Cars uc = new UC_Cars();
@@ -47,12 +54,7 @@ namespace CarDealership.Forms {
             Close();
         }
 
-        private void topPanel_MouseMove(object sender, MouseEventArgs e) {
-            if (e.Button == MouseButtons.Left) {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
+        
 
         private void pictureBox2_Click(object sender, EventArgs e) {
             WindowState = FormWindowState.Minimized;

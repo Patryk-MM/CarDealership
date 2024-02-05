@@ -23,225 +23,45 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarDetailsForm));
             carNameLabel = new Label();
-            label1 = new Label();
-            label2 = new Label();
-            CarModelLabel = new Label();
-            CarYearLabel = new Label();
-            carIDTextBox = new TextBox();
-            carBrandTextBox = new TextBox();
-            carModelTextBox = new TextBox();
-            carYearTextBox = new TextBox();
-            label5 = new Label();
-            InsurerTextBox = new TextBox();
-            InsuranceTypeTextBox = new TextBox();
-            InsuranceNumberTextBox = new TextBox();
-            InsuranceIDTextBox = new TextBox();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            countlabel = new Label();
-            InsuranceInsCountTextBox = new TextBox();
-            editButton = new Button();
             saveButton = new Button();
             cancelButton = new Button();
+            topPanel = new Panel();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            exitPicture = new PictureBox();
+            carBindingSource = new BindingSource(components);
+            carPropertyGrid = new PropertyGrid();
+            optionComboBox = new ComboBox();
+            detailsDataGrid = new DataGridView();
+            reservationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            carIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            clientIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            startDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            endDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            reservationBindingSource = new BindingSource(components);
+            label1 = new Label();
+            topPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)exitPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)carBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)detailsDataGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)reservationBindingSource).BeginInit();
             SuspendLayout();
             // 
             // carNameLabel
             // 
             carNameLabel.AutoSize = true;
-            carNameLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            carNameLabel.Font = new Font("Tahoma", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 238);
             carNameLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            carNameLabel.Location = new Point(44, 28);
+            carNameLabel.Location = new Point(46, 49);
             carNameLabel.Name = "carNameLabel";
-            carNameLabel.Size = new Size(72, 30);
+            carNameLabel.Size = new Size(103, 35);
             carNameLabel.TabIndex = 0;
             carNameLabel.Text = "label1";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F);
-            label1.Location = new Point(46, 100);
-            label1.Name = "label1";
-            label1.Size = new Size(30, 25);
-            label1.TabIndex = 1;
-            label1.Text = "ID";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F);
-            label2.Location = new Point(106, 100);
-            label2.Name = "label2";
-            label2.Size = new Size(62, 25);
-            label2.TabIndex = 2;
-            label2.Text = "Brand";
-            // 
-            // CarModelLabel
-            // 
-            CarModelLabel.AutoSize = true;
-            CarModelLabel.Font = new Font("Segoe UI", 14.25F);
-            CarModelLabel.Location = new Point(230, 100);
-            CarModelLabel.Name = "CarModelLabel";
-            CarModelLabel.Size = new Size(66, 25);
-            CarModelLabel.TabIndex = 3;
-            CarModelLabel.Text = "Model";
-            // 
-            // CarYearLabel
-            // 
-            CarYearLabel.AutoSize = true;
-            CarYearLabel.Font = new Font("Segoe UI", 14.25F);
-            CarYearLabel.Location = new Point(358, 100);
-            CarYearLabel.Name = "CarYearLabel";
-            CarYearLabel.Size = new Size(48, 25);
-            CarYearLabel.TabIndex = 4;
-            CarYearLabel.Text = "Year";
-            // 
-            // carIDTextBox
-            // 
-            carIDTextBox.Location = new Point(46, 128);
-            carIDTextBox.Name = "carIDTextBox";
-            carIDTextBox.ReadOnly = true;
-            carIDTextBox.Size = new Size(30, 23);
-            carIDTextBox.TabIndex = 5;
-            // 
-            // carBrandTextBox
-            // 
-            carBrandTextBox.Location = new Point(106, 128);
-            carBrandTextBox.Name = "carBrandTextBox";
-            carBrandTextBox.ReadOnly = true;
-            carBrandTextBox.Size = new Size(95, 23);
-            carBrandTextBox.TabIndex = 6;
-            // 
-            // carModelTextBox
-            // 
-            carModelTextBox.Location = new Point(230, 128);
-            carModelTextBox.Name = "carModelTextBox";
-            carModelTextBox.ReadOnly = true;
-            carModelTextBox.Size = new Size(109, 23);
-            carModelTextBox.TabIndex = 7;
-            // 
-            // carYearTextBox
-            // 
-            carYearTextBox.Location = new Point(358, 128);
-            carYearTextBox.Name = "carYearTextBox";
-            carYearTextBox.ReadOnly = true;
-            carYearTextBox.Size = new Size(48, 23);
-            carYearTextBox.TabIndex = 8;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            label5.Location = new Point(44, 215);
-            label5.Name = "label5";
-            label5.Size = new Size(99, 25);
-            label5.TabIndex = 9;
-            label5.Text = "Insurance";
-            // 
-            // InsurerTextBox
-            // 
-            InsurerTextBox.Location = new Point(358, 272);
-            InsurerTextBox.Name = "InsurerTextBox";
-            InsurerTextBox.ReadOnly = true;
-            InsurerTextBox.Size = new Size(71, 23);
-            InsurerTextBox.TabIndex = 13;
-            // 
-            // InsuranceTypeTextBox
-            // 
-            InsuranceTypeTextBox.Location = new Point(231, 272);
-            InsuranceTypeTextBox.Name = "InsuranceTypeTextBox";
-            InsuranceTypeTextBox.ReadOnly = true;
-            InsuranceTypeTextBox.Size = new Size(109, 23);
-            InsuranceTypeTextBox.TabIndex = 12;
-            // 
-            // InsuranceNumberTextBox
-            // 
-            InsuranceNumberTextBox.Location = new Point(106, 272);
-            InsuranceNumberTextBox.Name = "InsuranceNumberTextBox";
-            InsuranceNumberTextBox.ReadOnly = true;
-            InsuranceNumberTextBox.Size = new Size(95, 23);
-            InsuranceNumberTextBox.TabIndex = 11;
-            // 
-            // InsuranceIDTextBox
-            // 
-            InsuranceIDTextBox.Location = new Point(46, 272);
-            InsuranceIDTextBox.Name = "InsuranceIDTextBox";
-            InsuranceIDTextBox.ReadOnly = true;
-            InsuranceIDTextBox.Size = new Size(30, 23);
-            InsuranceIDTextBox.TabIndex = 10;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F);
-            label6.Location = new Point(358, 244);
-            label6.Name = "label6";
-            label6.Size = new Size(71, 25);
-            label6.TabIndex = 17;
-            label6.Text = "Insurer";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 14.25F);
-            label7.Location = new Point(230, 244);
-            label7.Name = "label7";
-            label7.Size = new Size(51, 25);
-            label7.TabIndex = 16;
-            label7.Text = "Type";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 14.25F);
-            label8.Location = new Point(106, 244);
-            label8.Name = "label8";
-            label8.Size = new Size(81, 25);
-            label8.TabIndex = 15;
-            label8.Text = "Number";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 14.25F);
-            label9.Location = new Point(46, 244);
-            label9.Name = "label9";
-            label9.Size = new Size(30, 25);
-            label9.TabIndex = 14;
-            label9.Text = "ID";
-            // 
-            // countlabel
-            // 
-            countlabel.AutoSize = true;
-            countlabel.Font = new Font("Segoe UI", 14.25F);
-            countlabel.Location = new Point(455, 244);
-            countlabel.Name = "countlabel";
-            countlabel.Size = new Size(169, 25);
-            countlabel.TabIndex = 18;
-            countlabel.Text = "No. of installments";
-            // 
-            // InsuranceInsCountTextBox
-            // 
-            InsuranceInsCountTextBox.Location = new Point(455, 272);
-            InsuranceInsCountTextBox.Name = "InsuranceInsCountTextBox";
-            InsuranceInsCountTextBox.ReadOnly = true;
-            InsuranceInsCountTextBox.Size = new Size(71, 23);
-            InsuranceInsCountTextBox.TabIndex = 19;
-            InsuranceInsCountTextBox.MouseDoubleClick += InsuranceInsCountTextBox_MouseDoubleClick;
-            // 
-            // editButton
-            // 
-            editButton.Font = new Font("Segoe UI", 16F);
-            editButton.Location = new Point(827, 783);
-            editButton.Name = "editButton";
-            editButton.Size = new Size(126, 40);
-            editButton.TabIndex = 20;
-            editButton.Text = "Edit";
-            editButton.UseVisualStyleBackColor = true;
-            editButton.Click += editButton_Click;
             // 
             // saveButton
             // 
@@ -252,7 +72,6 @@
             saveButton.TabIndex = 21;
             saveButton.Text = "Save";
             saveButton.UseVisualStyleBackColor = true;
-            saveButton.Visible = false;
             saveButton.Click += saveButton_Click;
             // 
             // cancelButton
@@ -264,39 +83,167 @@
             cancelButton.TabIndex = 22;
             cancelButton.Text = "Cancel";
             cancelButton.UseVisualStyleBackColor = true;
-            cancelButton.Visible = false;
             cancelButton.Click += cancelButton_Click;
+            // 
+            // topPanel
+            // 
+            topPanel.BackColor = Color.DarkSlateBlue;
+            topPanel.Controls.Add(pictureBox1);
+            topPanel.Controls.Add(pictureBox2);
+            topPanel.Controls.Add(exitPicture);
+            topPanel.Dock = DockStyle.Top;
+            topPanel.Location = new Point(0, 0);
+            topPanel.Name = "topPanel";
+            topPanel.Size = new Size(1000, 33);
+            topPanel.TabIndex = 26;
+            topPanel.MouseMove += topPanel_MouseMove;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.close;
+            pictureBox1.Location = new Point(968, 1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(30, 30);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 27;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(1536, 1);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(30, 30);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
+            // 
+            // exitPicture
+            // 
+            exitPicture.Image = Properties.Resources.close;
+            exitPicture.Location = new Point(1569, 2);
+            exitPicture.Name = "exitPicture";
+            exitPicture.Size = new Size(30, 30);
+            exitPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            exitPicture.TabIndex = 0;
+            exitPicture.TabStop = false;
+            // 
+            // carBindingSource
+            // 
+            carBindingSource.DataSource = typeof(Models.Car);
+            // 
+            // carPropertyGrid
+            // 
+            carPropertyGrid.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            carPropertyGrid.HelpVisible = false;
+            carPropertyGrid.Location = new Point(46, 87);
+            carPropertyGrid.Name = "carPropertyGrid";
+            carPropertyGrid.PropertySort = PropertySort.NoSort;
+            carPropertyGrid.Size = new Size(907, 155);
+            carPropertyGrid.TabIndex = 27;
+            carPropertyGrid.ToolbarVisible = false;
+            carPropertyGrid.PropertyValueChanged += carPropertyGrid_PropertyValueChanged;
+            // 
+            // optionComboBox
+            // 
+            optionComboBox.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            optionComboBox.FormattingEnabled = true;
+            optionComboBox.Items.AddRange(new object[] { "Insurances", "Repairs", "Reservations" });
+            optionComboBox.Location = new Point(46, 314);
+            optionComboBox.Name = "optionComboBox";
+            optionComboBox.Size = new Size(121, 26);
+            optionComboBox.TabIndex = 28;
+            optionComboBox.SelectedValueChanged += optionComboBox_SelectedValueChanged;
+            // 
+            // detailsDataGrid
+            // 
+            detailsDataGrid.AllowUserToAddRows = false;
+            detailsDataGrid.AllowUserToDeleteRows = false;
+            detailsDataGrid.AutoGenerateColumns = false;
+            detailsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            detailsDataGrid.Columns.AddRange(new DataGridViewColumn[] { reservationIDDataGridViewTextBoxColumn, carIDDataGridViewTextBoxColumn, clientIDDataGridViewTextBoxColumn, startDateDataGridViewTextBoxColumn, endDateDataGridViewTextBoxColumn });
+            detailsDataGrid.DataSource = reservationBindingSource;
+            detailsDataGrid.Location = new Point(46, 378);
+            detailsDataGrid.Name = "detailsDataGrid";
+            detailsDataGrid.ReadOnly = true;
+            detailsDataGrid.Size = new Size(907, 150);
+            detailsDataGrid.TabIndex = 29;
+            // 
+            // reservationIDDataGridViewTextBoxColumn
+            // 
+            reservationIDDataGridViewTextBoxColumn.DataPropertyName = "ReservationID";
+            reservationIDDataGridViewTextBoxColumn.HeaderText = "ReservationID";
+            reservationIDDataGridViewTextBoxColumn.Name = "reservationIDDataGridViewTextBoxColumn";
+            reservationIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // carIDDataGridViewTextBoxColumn
+            // 
+            carIDDataGridViewTextBoxColumn.DataPropertyName = "CarID";
+            carIDDataGridViewTextBoxColumn.HeaderText = "CarID";
+            carIDDataGridViewTextBoxColumn.Name = "carIDDataGridViewTextBoxColumn";
+            carIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // clientIDDataGridViewTextBoxColumn
+            // 
+            clientIDDataGridViewTextBoxColumn.DataPropertyName = "ClientID";
+            clientIDDataGridViewTextBoxColumn.HeaderText = "ClientID";
+            clientIDDataGridViewTextBoxColumn.Name = "clientIDDataGridViewTextBoxColumn";
+            clientIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startDateDataGridViewTextBoxColumn
+            // 
+            startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
+            startDateDataGridViewTextBoxColumn.HeaderText = "StartDate";
+            startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
+            startDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // endDateDataGridViewTextBoxColumn
+            // 
+            endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
+            endDateDataGridViewTextBoxColumn.HeaderText = "EndDate";
+            endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
+            endDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // reservationBindingSource
+            // 
+            reservationBindingSource.DataSource = typeof(Models.Reservation);
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            label1.ImageAlign = ContentAlignment.MiddleLeft;
+            label1.Location = new Point(46, 286);
+            label1.Name = "label1";
+            label1.Size = new Size(296, 25);
+            label1.TabIndex = 30;
+            label1.Text = "Select an option to display:";
             // 
             // CarDetailsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1000, 855);
+            Controls.Add(label1);
+            Controls.Add(detailsDataGrid);
+            Controls.Add(optionComboBox);
+            Controls.Add(carPropertyGrid);
+            Controls.Add(topPanel);
             Controls.Add(cancelButton);
             Controls.Add(saveButton);
-            Controls.Add(editButton);
-            Controls.Add(InsuranceInsCountTextBox);
-            Controls.Add(countlabel);
-            Controls.Add(label6);
-            Controls.Add(label7);
-            Controls.Add(label8);
-            Controls.Add(label9);
-            Controls.Add(InsurerTextBox);
-            Controls.Add(InsuranceTypeTextBox);
-            Controls.Add(InsuranceNumberTextBox);
-            Controls.Add(InsuranceIDTextBox);
-            Controls.Add(label5);
-            Controls.Add(carYearTextBox);
-            Controls.Add(carModelTextBox);
-            Controls.Add(carBrandTextBox);
-            Controls.Add(carIDTextBox);
-            Controls.Add(CarYearLabel);
-            Controls.Add(CarModelLabel);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(carNameLabel);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "CarDetailsForm";
             Text = "CarDetails";
+            topPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)exitPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)carBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)detailsDataGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)reservationBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -304,27 +251,22 @@
         #endregion
 
         private Label carNameLabel;
-        private Label label1;
-        private Label label2;
-        private Label CarModelLabel;
-        private Label CarYearLabel;
-        private TextBox carIDTextBox;
-        private TextBox carBrandTextBox;
-        private TextBox carModelTextBox;
-        private TextBox carYearTextBox;
-        private Label label5;
-        private TextBox InsurerTextBox;
-        private TextBox InsuranceTypeTextBox;
-        private TextBox InsuranceNumberTextBox;
-        private TextBox InsuranceIDTextBox;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private Label label9;
-        private Label countlabel;
-        private TextBox InsuranceInsCountTextBox;
-        private Button editButton;
         private Button saveButton;
         private Button cancelButton;
+        private Panel topPanel;
+        private PictureBox pictureBox2;
+        private PictureBox exitPicture;
+        private PictureBox pictureBox1;
+        private BindingSource carBindingSource;
+        private PropertyGrid carPropertyGrid;
+        private ComboBox optionComboBox;
+        private DataGridView detailsDataGrid;
+        private DataGridViewTextBoxColumn reservationIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn carIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn clientIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
+        private BindingSource reservationBindingSource;
+        private Label label1;
     }
 }

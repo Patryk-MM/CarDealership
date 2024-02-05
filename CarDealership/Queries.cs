@@ -1,6 +1,7 @@
 ﻿using CarDealership.Models;
 using Microsoft.Identity.Client;
 using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -169,23 +170,25 @@ namespace CarDealership {
             }
         }
 
-        public static Insurance? GetInsuranceByCarID(int id) {
+        public static BindingList<Insurance>? GetInsurancesByCarID(int id) {
             using (Database db = new Database()) {
-                Insurance? insurance = db.Insurances?
-                    .FirstOrDefault(i => i.CarID == id);
+                List<Insurance>? insurances = db.Insurances?
+                    .Where(p => p.CarID == id)
+                    .ToList();
 
-                if (insurance is null) {
+                if (insurances is null) {
                     return null;
                 }
 
-                return insurance;
+                BindingList<Insurance> bindingInsurances = new BindingList<Insurance>(insurances);
+                return bindingInsurances;
             }
         }
 
         public static List<Installment>? GetInstallmentsByInsuranceID(int id) {
             using (Database db = new Database()) {
                 List<Installment>? installments = db.InsuranceInstallments?
-                    .Where(i => i.InsuranceID == id)
+                    .Where(p => p.InsuranceID == id)
                     .ToList();
 
                 if (installments is null || !installments.Any()) {
@@ -195,5 +198,35 @@ namespace CarDealership {
                 return installments;
             }
         }
+
+        public static BindingList<Reservation>? GetReservationsByCarID(int id) {
+            using (Database db = new Database()) {
+                List<Reservation>? meetings = db.Reservations?
+                    .Where(p => p.CarID == id)
+                    .ToList();
+                if (meetings is null || !meetings.Any()) {
+                    return null;
+                }
+
+                BindingList<Reservation> bindingMeetings = new BindingList<Reservation>(meetings);
+                return bindingMeetings;
+            }
+
+        }
+
+        public static List<ServiceRepair>? GetServicesRepairsByCarID(int id) {
+            using (Database db = new Database()) {
+                List<ServiceRepair>? repairs = db.ServicesRepairs?
+                    .Where(p => p.CarID == id)
+                    .ToList();
+                if (repairs is null || !repairs.Any()) {
+                    return null;
+                }
+
+                return repairs;
+            }
+
+        }
+
     }
 }

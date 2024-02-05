@@ -16,6 +16,8 @@ namespace CarDealership
         public DbSet<Car>? Cars { get; set; }
         public DbSet<Insurance>? Insurances { get; set; }
         public DbSet<Installment>? InsuranceInstallments { get; set; }
+        public DbSet<Reservation>? Reservations { get; set; }
+        public DbSet<ServiceRepair>? ServicesRepairs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
