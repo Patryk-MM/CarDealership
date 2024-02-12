@@ -35,10 +35,14 @@ namespace CarDealership.UserControls {
             conditionComboBox.DataSource = Queries.GetCondition();
             conditionComboBox.SelectedItem = null;
             //Fetching data for dataGrid
-            cars = Queries.GetCarsByBrand("");
-            carsDataGrid.DataSource = cars;
+            reloadGrid();
             carsDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
+        }
+
+        public void reloadGrid() {
+            cars = Queries.GetCarsByBrand("");
+            carsDataGrid.DataSource = cars;
         }
 
         //Returns all the controls of specific type to a list
@@ -58,56 +62,49 @@ namespace CarDealership.UserControls {
             modelComboBox.SelectedItem = null;
         }
 
-        //These two swap year values if the starting year is higher than the ending year.
-        private void yearToComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-            if (yearFromComboBox.SelectedItem == null || yearToComboBox.SelectedItem == null) return;
-            if (Convert.ToInt32(yearFromComboBox.SelectedItem) > Convert.ToInt32(yearToComboBox.SelectedItem)) {
-                var temp = yearToComboBox.SelectedItem;
-                yearToComboBox.SelectedItem = yearFromComboBox.SelectedItem;
-                yearFromComboBox.SelectedItem = temp;
+        //Swapping ComboBox values if necessary
+        private void SwapComboBoxValues(ComboBox comboBox1, ComboBox comboBox2) {
+            if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null) return;
+
+            double value1, value2;
+            if (!double.TryParse(comboBox1.SelectedItem.ToString(), out value1) || !double.TryParse(comboBox2.SelectedItem.ToString(), out value2))
+                return;
+
+            if (value1 > value2) {
+                var temp = comboBox2.SelectedItem;
+                comboBox2.SelectedItem = comboBox1.SelectedItem;
+                comboBox1.SelectedItem = temp;
             }
         }
 
-        private void yearFromComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-            if (yearFromComboBox.SelectedItem == null || yearToComboBox.SelectedItem == null) return;
-            if (Convert.ToInt32(yearFromComboBox.SelectedItem) > Convert.ToInt32(yearToComboBox.SelectedItem)) {
-                var temp = yearToComboBox.SelectedItem;
-                yearToComboBox.SelectedItem = yearFromComboBox.SelectedItem;
-                yearFromComboBox.SelectedItem = temp;
-            }
+        private void yearComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            SwapComboBoxValues(yearFromComboBox, yearToComboBox);
         }
 
-        //These two swap engine capacity values if the first one is higher than the second one.
-        private void engCapFromComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-            if (engCapFromComboBox.SelectedItem == null || engCapToComboBox.SelectedItem == null) return;
-
-            if (Convert.ToDouble(engCapFromComboBox.SelectedItem.ToString()) > Convert.ToDouble(engCapToComboBox.SelectedItem.ToString())) {
-                var temp = engCapToComboBox.SelectedItem;
-                engCapToComboBox.SelectedItem = engCapFromComboBox.SelectedItem;
-                engCapFromComboBox.SelectedItem = temp;
-
-            }
+        private void engCapComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            SwapComboBoxValues(engCapFromComboBox, engCapToComboBox);
+        }
+        private void mileageComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            SwapComboBoxValues(mileageFromComboBox, mileageToComboBox);
         }
 
-        private void engCapToComboBox_SelectedValueChanged(object sender, EventArgs e) {
-            if (engCapFromComboBox.SelectedItem == null || engCapToComboBox.SelectedItem == null) return;
-
-            if (Convert.ToDouble(engCapFromComboBox.SelectedItem.ToString()) > Convert.ToDouble(engCapToComboBox.SelectedItem.ToString())) {
-                var temp = engCapToComboBox.SelectedItem;
-                engCapToComboBox.SelectedItem = engCapFromComboBox.SelectedItem;
-                engCapFromComboBox.SelectedItem = temp;
-            }
+        private void engPowComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            SwapComboBoxValues(engPowFromComboBox, engPowToComboBox);
         }
+
 
         private void filterButton_Click(object sender, EventArgs e) {
             carsDataGrid.DataSource = HandleCarFilters(
-                //TODO: Handle exceptions when inputting data manually
                 brand: brandComboBox.Text,
                 model: modelComboBox.Text,
                 startYear: yearFromComboBox.Text,
                 endYear: yearToComboBox.Text,
                 engCapFrom: engCapFromComboBox.Text,
                 engCapTo: engCapToComboBox.Text,
+                mileageFrom: mileageFromComboBox.Text,
+                mileageTo: mileageToComboBox.Text,
+                engPowFrom: engPowFromComboBox.Text,
+                engPowTo: engPowToComboBox.Text,
                 fuel: fuelComboBox.Text,
                 drivetrain: drivetrainComboBox.Text,
                 transmission: transmissionComboBox.Text,
@@ -132,10 +129,11 @@ namespace CarDealership.UserControls {
             foreach (var box in filterBoxes) {
                 box.Text = null;
             }
+            reloadGrid();
         }
 
         public List<Car>? HandleCarFilters(string brand, string model, string startYear, string endYear, string engCapFrom,
-            string engCapTo, string fuel, string drivetrain, string transmission, string bodyType, string color, string steeringWheel, string condition) {
+            string engCapTo, string mileageFrom, string mileageTo, string engPowFrom, string engPowTo, string fuel, string drivetrain, string transmission, string bodyType, string color, string steeringWheel, string condition) {
             //TODO: Add correct values to all the filter comboboxes
             var filteredCars = cars;
 
@@ -147,14 +145,37 @@ namespace CarDealership.UserControls {
                 filteredCars = filteredCars.Where(x => x.Model.ToLower().Contains(model.ToLower())).ToList();
             }
 
-            if (!string.IsNullOrEmpty(startYear) && !string.IsNullOrEmpty(endYear)) {
-                //TODO: Make this so it doesn't require both values
+            if (!string.IsNullOrEmpty(startYear) && !string.IsNullOrEmpty(endYear))
                 filteredCars = filteredCars.Where(x => x.ProductionYear >= Convert.ToInt32(startYear) && x.ProductionYear <= Convert.ToInt32(endYear)).ToList();
+            else if (!string.IsNullOrEmpty(startYear)) {
+                filteredCars = filteredCars.Where(x => x.ProductionYear >= Convert.ToInt32(startYear)).ToList();
+            } else if (!string.IsNullOrEmpty(endYear)) {
+                filteredCars = filteredCars.Where(x => x.ProductionYear <= Convert.ToInt32(endYear)).ToList();
             }
 
+
             if (!string.IsNullOrEmpty(engCapFrom) && !string.IsNullOrEmpty(engCapTo)) {
-                //TODO: Make this so it doesn't require both values
                 filteredCars = filteredCars.Where(x => x.EngineCapacity >= Convert.ToInt32(engCapFrom) && x.EngineCapacity <= Convert.ToInt32(engCapTo)).ToList();
+            } else if (!string.IsNullOrEmpty(engCapFrom)) {
+                filteredCars = filteredCars.Where(x => x.EngineCapacity >= Convert.ToInt32(engCapFrom)).ToList();
+            } else if (!string.IsNullOrEmpty(engCapTo)) {
+                filteredCars = filteredCars.Where(x => x.EngineCapacity <= Convert.ToInt32(engCapTo)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(mileageFrom) && !string.IsNullOrEmpty(mileageTo)) {
+                filteredCars = filteredCars.Where(x => x.Mileage >= Convert.ToInt32(mileageFrom) && x.Mileage <= Convert.ToInt32(mileageTo)).ToList();
+            } else if (!string.IsNullOrEmpty(mileageFrom)) {
+                filteredCars = filteredCars.Where(x => x.Mileage >= Convert.ToInt32(mileageFrom)).ToList();
+            } else if (!string.IsNullOrEmpty(mileageTo)) {
+                filteredCars = filteredCars.Where(x => x.Mileage <= Convert.ToInt32(mileageTo)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(engPowFrom) && !string.IsNullOrEmpty(engPowTo)) {
+                filteredCars = filteredCars.Where(x => x.Power >= Convert.ToInt32(engPowFrom) && x.Power <= Convert.ToInt32(engPowTo)).ToList();
+            } else if (!string.IsNullOrEmpty(engPowFrom)) {
+                filteredCars = filteredCars.Where(x => x.Power >= Convert.ToInt32(engPowFrom)).ToList();
+            } else if (!string.IsNullOrEmpty(engPowTo)) {
+                filteredCars = filteredCars.Where(x => x.Power <= Convert.ToInt32(engPowTo)).ToList();
             }
 
             if (!string.IsNullOrEmpty(fuel)) {
@@ -182,7 +203,7 @@ namespace CarDealership.UserControls {
             }
 
             if (!string.IsNullOrEmpty(condition)) {
-                filteredCars = filteredCars.Where(x => x.TechnicalCondition.ToLower().Contains(condition.ToLower())).ToList();
+                filteredCars = filteredCars.Where(x => x.TechnicalCondition.ToLower().Equals(condition.ToLower())).ToList();
             }
 
             return filteredCars;
@@ -190,6 +211,54 @@ namespace CarDealership.UserControls {
 
         private void carsDataGrid_DataSourceChanged(object sender, EventArgs e) {
             resultLabel.Text = $"Result ({carsDataGrid.RowCount} entries)";
+        }
+
+        private void addCarButton_Click(object sender, EventArgs e) {
+            NewCarForm nc = new NewCarForm();
+            nc.Show();
+        }
+
+        private void removeCarButton_Click(object sender, EventArgs e) {
+            var selected = carsDataGrid.SelectedRows;
+            if (selected.Count <= 0) {
+                MessageBox.Show("No records selected.");
+                return;
+            }
+
+            var confirmResult = MessageBox.Show("Are you sure to delete this item?", "Confirm Delete", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes) {
+                List<int> list = new();
+                for (int i = 0; i < selected.Count; i++) {
+                    list.Add(Convert.ToInt32(selected[i].Cells[0].Value));
+                }
+                using (Database db = new Database()) {
+                    foreach (int i in list) {
+                        db.Remove(Queries.GetCarsByID(i));
+                    }
+                    db.SaveChanges();
+                    MessageBox.Show("Records have been deleted.");
+                    reloadGrid();
+                }
+            } else { return; }
+        }
+
+        private void refreshPicture_Click(object sender, EventArgs e) {
+            reloadGrid();
+        }
+
+        private void refreshPicture_MouseHover(object sender, EventArgs e) {
+            //MessageBox.Show($"{refreshPicture.BackColor.ToString()}");
+            refreshPicture.BackColor = Color.MediumSlateBlue;
+
+        }
+
+        private void refreshPicture_MouseLeave(object sender, EventArgs e) {
+            refreshPicture.BackColor = Color.Transparent;
+
+        }
+
+        private void refreshPicture_MouseDown(object sender, MouseEventArgs e) {
+            refreshPicture.BackColor = Color.Transparent;
         }
     }
 }

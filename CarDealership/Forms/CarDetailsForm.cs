@@ -19,8 +19,7 @@ namespace CarDealership {
         private Car carBackup = new Car();
         private BindingList<Reservation>? reservations = new();
         private BindingList<Insurance>? insurances = new();
-        private List<ServiceRepair> repairs = new List<ServiceRepair>();
-        List<TextBox> editableTextBoxes = new List<TextBox>();
+        private List<ServiceRepair>? repairs = new List<ServiceRepair>();
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -50,15 +49,6 @@ namespace CarDealership {
             detailsDataGrid.DataSource = null;
             detailsDataGrid.AutoGenerateColumns = true;
 
-            //if (insurance is not null) {
-            //    InsuranceIDTextBox.Text = insurance.InsuranceID.ToString();
-            //    InsuranceNumberTextBox.Text = insurance.InsuranceNumber.ToString();
-            //    InsuranceTypeTextBox.Text = insurance.InsuranceType.ToString();
-            //    InsurerTextBox.Text = insurance.Insurer.ToString();
-            //    InsuranceInsCountTextBox.Text = insurance.InstallmentCount.ToString();
-            //}
-
-            //editableTextBoxes.AddRange(new List<TextBox>() { carBrandTextBox, carModelTextBox, carYearTextBox });
         }
         private void InsuranceInsCountTextBox_MouseDoubleClick(object sender, MouseEventArgs e) {
             if (insurances is not null) {
@@ -98,10 +88,11 @@ namespace CarDealership {
         }
 
         private void cancelButton_Click(object sender, EventArgs e) {
-            this.Hide();
-            CarDetailsForm cd = new CarDetailsForm(car.CarID);
-            cd.Show();
-
+            //this.Hide();
+            //CarDetailsForm cd = new CarDetailsForm(car.CarID);
+            //cd.Show();
+            carPropertyGrid.SelectedObject = car;
+            carPropertyGrid.Refresh();
         }
 
         private void CarDetailsForm_FormClosed(object sender, FormClosedEventArgs e) {
@@ -113,11 +104,7 @@ namespace CarDealership {
         }
 
         private void carPropertyGrid_PropertyValueChanged(object s, PropertyValueChangedEventArgs e) {
-            MessageBox.Show(car.Model);
-        }
-
-        private void topPanel_MouseMove_1(object sender, MouseEventArgs e) {
-
+            //MessageBox.Show(car.Model);
         }
 
         private void optionComboBox_SelectedValueChanged(object sender, EventArgs e) {
@@ -134,18 +121,9 @@ namespace CarDealership {
                     detailsDataGrid.DataSource = repairs;
                     break;
             }
-            if(detailsDataGrid.DataSource == null) {
+            if (detailsDataGrid.DataSource == null) {
                 MessageBox.Show("No data to display.");
             }
-        }
-
-        private void ConfigureDataGrid(Object obj) {
-            if(obj is not null) {
-                detailsDataGrid.Columns.Clear();
-                foreach (PropertyInfo p in obj.GetType().GetProperties()) {
-                    detailsDataGrid.Columns.Add(null, p.ToString());
-                }
-            } 
         }
 
     }

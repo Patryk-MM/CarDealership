@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Cars));
             carsChangeForm = new Label();
             label1 = new Label();
             brandComboBox = new ComboBox();
@@ -75,8 +76,12 @@
             clearFilters = new Button();
             label13 = new Label();
             bodyTypeComboBox = new ComboBox();
+            addCarButton = new Button();
+            removeCarButton = new Button();
+            refreshPicture = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)carsDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)carBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)refreshPicture).BeginInit();
             SuspendLayout();
             // 
             // carsChangeForm
@@ -103,6 +108,7 @@
             // 
             brandComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             brandComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            brandComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             brandComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             brandComboBox.FormattingEnabled = true;
             brandComboBox.Location = new Point(30, 103);
@@ -115,6 +121,7 @@
             // 
             modelComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             modelComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            modelComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             modelComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             modelComboBox.FormattingEnabled = true;
             modelComboBox.Location = new Point(208, 103);
@@ -134,6 +141,7 @@
             // 
             // yearFromComboBox
             // 
+            yearFromComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             yearFromComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             yearFromComboBox.FormattingEnabled = true;
             yearFromComboBox.Items.AddRange(new object[] { "1900", "1930", "1960", "1980", "1990", "1995", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024" });
@@ -141,10 +149,11 @@
             yearFromComboBox.Name = "yearFromComboBox";
             yearFromComboBox.Size = new Size(80, 33);
             yearFromComboBox.TabIndex = 29;
-            yearFromComboBox.SelectedIndexChanged += yearFromComboBox_SelectedIndexChanged;
+            yearFromComboBox.SelectedIndexChanged += yearComboBox_SelectedIndexChanged;
             // 
             // yearToComboBox
             // 
+            yearToComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             yearToComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             yearToComboBox.FormattingEnabled = true;
             yearToComboBox.Items.AddRange(new object[] { "1900", "1930", "1960", "1980", "1990", "1995", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024" });
@@ -152,7 +161,7 @@
             yearToComboBox.Name = "yearToComboBox";
             yearToComboBox.Size = new Size(80, 33);
             yearToComboBox.TabIndex = 30;
-            yearToComboBox.SelectedIndexChanged += yearToComboBox_SelectedIndexChanged;
+            yearToComboBox.SelectedIndexChanged += yearComboBox_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -176,6 +185,7 @@
             // 
             // engCapToComboBox
             // 
+            engCapToComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             engCapToComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             engCapToComboBox.FormattingEnabled = true;
             engCapToComboBox.Items.AddRange(new object[] { "1000", "1200", "1400", "1600", "1800", "2000", "2200", "2400", "2600", "2800", "3000" });
@@ -183,10 +193,11 @@
             engCapToComboBox.Name = "engCapToComboBox";
             engCapToComboBox.Size = new Size(80, 33);
             engCapToComboBox.TabIndex = 33;
-            engCapToComboBox.SelectedValueChanged += engCapToComboBox_SelectedValueChanged;
+            engCapToComboBox.SelectedIndexChanged += engCapComboBox_SelectedIndexChanged;
             // 
             // engCapFromComboBox
             // 
+            engCapFromComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             engCapFromComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             engCapFromComboBox.FormattingEnabled = true;
             engCapFromComboBox.Items.AddRange(new object[] { "1000", "1200", "1400", "1600", "1800", "2000", "2200", "2400", "2600", "2800", "3000" });
@@ -194,7 +205,7 @@
             engCapFromComboBox.Name = "engCapFromComboBox";
             engCapFromComboBox.Size = new Size(80, 33);
             engCapFromComboBox.TabIndex = 32;
-            engCapFromComboBox.SelectedIndexChanged += engCapFromComboBox_SelectedIndexChanged;
+            engCapFromComboBox.SelectedIndexChanged += engCapComboBox_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -208,23 +219,27 @@
             // 
             // mileageToComboBox
             // 
+            mileageToComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             mileageToComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             mileageToComboBox.FormattingEnabled = true;
-            mileageToComboBox.Items.AddRange(new object[] { "1000", "1200", "1400", "1600", "1800", "2000", "2200", "2400", "2600", "2800", "3000" });
+            mileageToComboBox.Items.AddRange(new object[] { "50000", "100000", "150000", "200000", "250000", "300000", "350000", "400000", "450000", "500000" });
             mileageToComboBox.Location = new Point(866, 103);
             mileageToComboBox.Name = "mileageToComboBox";
             mileageToComboBox.Size = new Size(110, 33);
             mileageToComboBox.TabIndex = 36;
+            mileageToComboBox.SelectedIndexChanged += mileageComboBox_SelectedIndexChanged;
             // 
             // mileageFromComboBox
             // 
+            mileageFromComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             mileageFromComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             mileageFromComboBox.FormattingEnabled = true;
-            mileageFromComboBox.Items.AddRange(new object[] { "1000", "1200", "1400", "1600", "1800", "2000", "2200", "2400", "2600", "2800", "3000" });
+            mileageFromComboBox.Items.AddRange(new object[] { "50000", "100000", "150000", "200000", "250000", "300000", "350000", "400000", "450000", "500000" });
             mileageFromComboBox.Location = new Point(750, 103);
             mileageFromComboBox.Name = "mileageFromComboBox";
             mileageFromComboBox.Size = new Size(110, 33);
             mileageFromComboBox.TabIndex = 35;
+            mileageFromComboBox.SelectedIndexChanged += mileageComboBox_SelectedIndexChanged;
             // 
             // label6
             // 
@@ -238,23 +253,27 @@
             // 
             // engPowToComboBox
             // 
+            engPowToComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             engPowToComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             engPowToComboBox.FormattingEnabled = true;
-            engPowToComboBox.Items.AddRange(new object[] { "1000", "1200", "1400", "1600", "1800", "2000", "2200", "2400", "2600", "2800", "3000" });
+            engPowToComboBox.Items.AddRange(new object[] { "100", "120", "150", "180", "200", "250", "300", "400", "500" });
             engPowToComboBox.Location = new Point(1077, 103);
             engPowToComboBox.Name = "engPowToComboBox";
             engPowToComboBox.Size = new Size(80, 33);
             engPowToComboBox.TabIndex = 39;
+            engPowToComboBox.SelectedIndexChanged += engPowComboBox_SelectedIndexChanged;
             // 
             // engPowFromComboBox
             // 
+            engPowFromComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             engPowFromComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             engPowFromComboBox.FormattingEnabled = true;
-            engPowFromComboBox.Items.AddRange(new object[] { "1000", "1200", "1400", "1600", "1800", "2000", "2200", "2400", "2600", "2800", "3000" });
+            engPowFromComboBox.Items.AddRange(new object[] { "100", "120", "150", "180", "200", "250", "300", "400", "500" });
             engPowFromComboBox.Location = new Point(991, 103);
             engPowFromComboBox.Name = "engPowFromComboBox";
             engPowFromComboBox.Size = new Size(80, 33);
             engPowFromComboBox.TabIndex = 38;
+            engPowFromComboBox.SelectedIndexChanged += engPowComboBox_SelectedIndexChanged;
             // 
             // label7
             // 
@@ -268,6 +287,7 @@
             // 
             // fuelComboBox
             // 
+            fuelComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             fuelComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             fuelComboBox.FormattingEnabled = true;
             fuelComboBox.Location = new Point(1172, 103);
@@ -287,6 +307,7 @@
             // 
             // drivetrainComboBox
             // 
+            drivetrainComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             drivetrainComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             drivetrainComboBox.FormattingEnabled = true;
             drivetrainComboBox.Location = new Point(1351, 103);
@@ -306,6 +327,7 @@
             // 
             // transmissionComboBox
             // 
+            transmissionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             transmissionComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             transmissionComboBox.FormattingEnabled = true;
             transmissionComboBox.Location = new Point(30, 172);
@@ -325,6 +347,7 @@
             // 
             // colorComboBox
             // 
+            colorComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             colorComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             colorComboBox.FormattingEnabled = true;
             colorComboBox.Location = new Point(387, 172);
@@ -344,6 +367,7 @@
             // 
             // steeringWheelComboBox
             // 
+            steeringWheelComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             steeringWheelComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             steeringWheelComboBox.FormattingEnabled = true;
             steeringWheelComboBox.Location = new Point(566, 172);
@@ -363,6 +387,7 @@
             // 
             // conditionComboBox
             // 
+            conditionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             conditionComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             conditionComboBox.FormattingEnabled = true;
             conditionComboBox.Location = new Point(751, 172);
@@ -548,6 +573,7 @@
             // 
             // bodyTypeComboBox
             // 
+            bodyTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             bodyTypeComboBox.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             bodyTypeComboBox.FormattingEnabled = true;
             bodyTypeComboBox.Location = new Point(208, 172);
@@ -555,10 +581,57 @@
             bodyTypeComboBox.Size = new Size(163, 33);
             bodyTypeComboBox.TabIndex = 57;
             // 
+            // addCarButton
+            // 
+            addCarButton.BackColor = Color.Transparent;
+            addCarButton.FlatAppearance.BorderSize = 0;
+            addCarButton.FlatAppearance.MouseOverBackColor = Color.MediumSlateBlue;
+            addCarButton.FlatStyle = FlatStyle.Flat;
+            addCarButton.Font = new Font("Tahoma", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            addCarButton.Location = new Point(30, 677);
+            addCarButton.Name = "addCarButton";
+            addCarButton.Size = new Size(216, 78);
+            addCarButton.TabIndex = 59;
+            addCarButton.Text = "Add a new car";
+            addCarButton.UseVisualStyleBackColor = false;
+            addCarButton.Click += addCarButton_Click;
+            // 
+            // removeCarButton
+            // 
+            removeCarButton.BackColor = Color.Transparent;
+            removeCarButton.FlatAppearance.BorderSize = 0;
+            removeCarButton.FlatAppearance.MouseOverBackColor = Color.MediumSlateBlue;
+            removeCarButton.FlatStyle = FlatStyle.Flat;
+            removeCarButton.Font = new Font("Tahoma", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            removeCarButton.Location = new Point(252, 677);
+            removeCarButton.Name = "removeCarButton";
+            removeCarButton.Size = new Size(216, 78);
+            removeCarButton.TabIndex = 60;
+            removeCarButton.Text = "Remove car";
+            removeCarButton.UseVisualStyleBackColor = false;
+            removeCarButton.Click += removeCarButton_Click;
+            // 
+            // refreshPicture
+            // 
+            refreshPicture.Image = (Image)resources.GetObject("refreshPicture.Image");
+            refreshPicture.Location = new Point(1517, 18);
+            refreshPicture.Name = "refreshPicture";
+            refreshPicture.Size = new Size(40, 40);
+            refreshPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            refreshPicture.TabIndex = 61;
+            refreshPicture.TabStop = false;
+            refreshPicture.Click += refreshPicture_Click;
+            refreshPicture.MouseDown += refreshPicture_MouseDown;
+            refreshPicture.MouseLeave += refreshPicture_MouseLeave;
+            refreshPicture.MouseHover += refreshPicture_MouseHover;
+            // 
             // UC_Cars
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(refreshPicture);
+            Controls.Add(removeCarButton);
+            Controls.Add(addCarButton);
             Controls.Add(label13);
             Controls.Add(bodyTypeComboBox);
             Controls.Add(clearFilters);
@@ -599,6 +672,7 @@
             Load += UC_Cars_Load;
             ((System.ComponentModel.ISupportInitialize)carsDataGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)carBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)refreshPicture).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -656,5 +730,8 @@
         private Button clearFilters;
         private Label label13;
         private ComboBox bodyTypeComboBox;
+        private Button addCarButton;
+        private Button removeCarButton;
+        private PictureBox refreshPicture;
     }
 }

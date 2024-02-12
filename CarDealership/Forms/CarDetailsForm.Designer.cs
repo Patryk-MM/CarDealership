@@ -36,11 +36,6 @@
             carPropertyGrid = new PropertyGrid();
             optionComboBox = new ComboBox();
             detailsDataGrid = new DataGridView();
-            reservationIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            carIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            clientIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            startDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            endDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             reservationBindingSource = new BindingSource(components);
             label1 = new Label();
             topPanel.SuspendLayout();
@@ -161,50 +156,12 @@
             // 
             detailsDataGrid.AllowUserToAddRows = false;
             detailsDataGrid.AllowUserToDeleteRows = false;
-            detailsDataGrid.AutoGenerateColumns = false;
             detailsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            detailsDataGrid.Columns.AddRange(new DataGridViewColumn[] { reservationIDDataGridViewTextBoxColumn, carIDDataGridViewTextBoxColumn, clientIDDataGridViewTextBoxColumn, startDateDataGridViewTextBoxColumn, endDateDataGridViewTextBoxColumn });
-            detailsDataGrid.DataSource = reservationBindingSource;
             detailsDataGrid.Location = new Point(46, 378);
             detailsDataGrid.Name = "detailsDataGrid";
             detailsDataGrid.ReadOnly = true;
             detailsDataGrid.Size = new Size(907, 150);
             detailsDataGrid.TabIndex = 29;
-            // 
-            // reservationIDDataGridViewTextBoxColumn
-            // 
-            reservationIDDataGridViewTextBoxColumn.DataPropertyName = "ReservationID";
-            reservationIDDataGridViewTextBoxColumn.HeaderText = "ReservationID";
-            reservationIDDataGridViewTextBoxColumn.Name = "reservationIDDataGridViewTextBoxColumn";
-            reservationIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // carIDDataGridViewTextBoxColumn
-            // 
-            carIDDataGridViewTextBoxColumn.DataPropertyName = "CarID";
-            carIDDataGridViewTextBoxColumn.HeaderText = "CarID";
-            carIDDataGridViewTextBoxColumn.Name = "carIDDataGridViewTextBoxColumn";
-            carIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // clientIDDataGridViewTextBoxColumn
-            // 
-            clientIDDataGridViewTextBoxColumn.DataPropertyName = "ClientID";
-            clientIDDataGridViewTextBoxColumn.HeaderText = "ClientID";
-            clientIDDataGridViewTextBoxColumn.Name = "clientIDDataGridViewTextBoxColumn";
-            clientIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // startDateDataGridViewTextBoxColumn
-            // 
-            startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
-            startDateDataGridViewTextBoxColumn.HeaderText = "StartDate";
-            startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
-            startDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // endDateDataGridViewTextBoxColumn
-            // 
-            endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
-            endDateDataGridViewTextBoxColumn.HeaderText = "EndDate";
-            endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
-            endDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // reservationBindingSource
             // 
@@ -261,11 +218,6 @@
         private PropertyGrid carPropertyGrid;
         private ComboBox optionComboBox;
         private DataGridView detailsDataGrid;
-        private DataGridViewTextBoxColumn reservationIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn carIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn clientIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
         private BindingSource reservationBindingSource;
         private Label label1;
     }
