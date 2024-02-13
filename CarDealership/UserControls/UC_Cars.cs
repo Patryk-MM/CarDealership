@@ -1,9 +1,12 @@
 ﻿using CarDealership.Models;
+using CsvHelper.Configuration;
+using CsvHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -121,10 +124,6 @@ namespace CarDealership.UserControls {
             cd.Show();
         }
 
-        private void UC_Cars_Load(object sender, EventArgs e) {
-
-        }
-
         private void clearFilters_Click(object sender, EventArgs e) {
             foreach (var box in filterBoxes) {
                 box.Text = null;
@@ -134,7 +133,6 @@ namespace CarDealership.UserControls {
 
         public List<Car>? HandleCarFilters(string brand, string model, string startYear, string endYear, string engCapFrom,
             string engCapTo, string mileageFrom, string mileageTo, string engPowFrom, string engPowTo, string fuel, string drivetrain, string transmission, string bodyType, string color, string steeringWheel, string condition) {
-            //TODO: Add correct values to all the filter comboboxes
             var filteredCars = cars;
 
             if (!string.IsNullOrEmpty(brand)) {
@@ -259,6 +257,74 @@ namespace CarDealership.UserControls {
 
         private void refreshPicture_MouseDown(object sender, MouseEventArgs e) {
             refreshPicture.BackColor = Color.Transparent;
+        }
+
+        private void exportButton_Click(object sender, EventArgs e) {
+            var selected = carsDataGrid.SelectedRows;
+            if (selected.Count <= 0) {
+                MessageBox.Show("No records selected.");
+                return;
+            }
+
+            var confirmResult = MessageBox.Show("Are you sure to export selected items to CSV file?", "Confirm Export", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes) {
+                List<Car> list = new();
+                for (int i = 0; i < selected.Count; i++) {
+                    list.Add(Queries.GetCarsByID(Convert.ToInt32(selected[i].Cells[0].Value)));
+                }
+                using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
+                    openFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                    openFileDialog.FilterIndex = 1;
+                    openFileDialog.RestoreDirectory = true;
+                    var config = new CsvConfiguration(CultureInfo.InvariantCulture) {
+                        HeaderValidated = null,
+                        MissingFieldFound = null
+                    };
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK) {
+                        try {
+                            using (StreamWriter writer = new StreamWriter(openFileDialog.FileName)) {
+                                using (CsvWriter csv = new CsvWriter(writer, config)) {
+                                    csv.WriteRecords(list);
+                                }
+                            }
+                        } catch (Exception ex) { MessageBox.Show($"{ex.Message}"); }
+                    }
+                }
+            } else { return; }
+        }
+
+        private void importButton_Click(object sender, EventArgs e) {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
+                openFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+                var config = new CsvConfiguration(CultureInfo.InvariantCulture) {
+                    HeaderValidated = null,
+                    MissingFieldFound = null
+                };
+                if (openFileDialog.ShowDialog() == DialogResult.OK) {
+
+                    try {
+                        using (StreamReader reader = new StreamReader(openFileDialog.FileName)) {
+                            using (CsvReader csv = new CsvReader(reader, config)) {
+                                var records = csv.GetRecords<Car>().ToList();
+                                var confirmResult = MessageBox.Show($"There are {records.Count()} records in the CSV file. Are you sure to import them?", "Confirm Import", MessageBoxButtons.YesNo);
+                                if (confirmResult == DialogResult.Yes) {
+                                    using (Database db = new Database()) {
+                                        foreach (var record in records) {
+                                            record.CarID = 0;
+                                            db.Add(record);
+                                        }
+                                        db.SaveChanges();
+                                    }
+                                } else { return; }
+                            }
+
+                        }
+                    } catch (Exception ex) { MessageBox.Show($"{ex.Message}"); }
+                }
+            }
         }
     }
 }

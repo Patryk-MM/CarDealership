@@ -79,6 +79,8 @@
             addCarButton = new Button();
             removeCarButton = new Button();
             refreshPicture = new PictureBox();
+            exportButton = new Button();
+            importButton = new Button();
             ((System.ComponentModel.ISupportInitialize)carsDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)carBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)refreshPicture).BeginInit();
@@ -625,10 +627,42 @@
             refreshPicture.MouseLeave += refreshPicture_MouseLeave;
             refreshPicture.MouseHover += refreshPicture_MouseHover;
             // 
+            // exportButton
+            // 
+            exportButton.BackColor = Color.Transparent;
+            exportButton.FlatAppearance.BorderSize = 0;
+            exportButton.FlatAppearance.MouseOverBackColor = Color.MediumSlateBlue;
+            exportButton.FlatStyle = FlatStyle.Flat;
+            exportButton.Font = new Font("Tahoma", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            exportButton.Location = new Point(734, 677);
+            exportButton.Name = "exportButton";
+            exportButton.Size = new Size(216, 78);
+            exportButton.TabIndex = 62;
+            exportButton.Text = "Export to CSV";
+            exportButton.UseVisualStyleBackColor = false;
+            exportButton.Click += exportButton_Click;
+            // 
+            // importButton
+            // 
+            importButton.BackColor = Color.Transparent;
+            importButton.FlatAppearance.BorderSize = 0;
+            importButton.FlatAppearance.MouseOverBackColor = Color.MediumSlateBlue;
+            importButton.FlatStyle = FlatStyle.Flat;
+            importButton.Font = new Font("Tahoma", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            importButton.Location = new Point(474, 677);
+            importButton.Name = "importButton";
+            importButton.Size = new Size(254, 78);
+            importButton.TabIndex = 63;
+            importButton.Text = "Import from CSV";
+            importButton.UseVisualStyleBackColor = false;
+            importButton.Click += importButton_Click;
+            // 
             // UC_Cars
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(importButton);
+            Controls.Add(exportButton);
             Controls.Add(refreshPicture);
             Controls.Add(removeCarButton);
             Controls.Add(addCarButton);
@@ -669,7 +703,6 @@
             Controls.Add(carsChangeForm);
             Name = "UC_Cars";
             Size = new Size(1600, 989);
-            Load += UC_Cars_Load;
             ((System.ComponentModel.ISupportInitialize)carsDataGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)carBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)refreshPicture).EndInit();
@@ -733,5 +766,7 @@
         private Button addCarButton;
         private Button removeCarButton;
         private PictureBox refreshPicture;
+        private Button exportButton;
+        private Button importButton;
     }
 }

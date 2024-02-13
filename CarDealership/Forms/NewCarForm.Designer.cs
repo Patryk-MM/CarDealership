@@ -195,42 +195,42 @@
             // 
             brandTextBox.Location = new Point(262, 110);
             brandTextBox.Name = "brandTextBox";
-            brandTextBox.Size = new Size(100, 23);
+            brandTextBox.Size = new Size(121, 23);
             brandTextBox.TabIndex = 15;
             // 
             // modelTextBox
             // 
             modelTextBox.Location = new Point(262, 153);
             modelTextBox.Name = "modelTextBox";
-            modelTextBox.Size = new Size(100, 23);
+            modelTextBox.Size = new Size(121, 23);
             modelTextBox.TabIndex = 16;
             // 
             // yearTextBox
             // 
             yearTextBox.Location = new Point(262, 194);
             yearTextBox.Name = "yearTextBox";
-            yearTextBox.Size = new Size(100, 23);
+            yearTextBox.Size = new Size(121, 23);
             yearTextBox.TabIndex = 17;
             // 
             // engineCapacityTextBox
             // 
             engineCapacityTextBox.Location = new Point(262, 239);
             engineCapacityTextBox.Name = "engineCapacityTextBox";
-            engineCapacityTextBox.Size = new Size(100, 23);
+            engineCapacityTextBox.Size = new Size(121, 23);
             engineCapacityTextBox.TabIndex = 18;
             // 
             // powerTextBox
             // 
             powerTextBox.Location = new Point(262, 282);
             powerTextBox.Name = "powerTextBox";
-            powerTextBox.Size = new Size(100, 23);
+            powerTextBox.Size = new Size(121, 23);
             powerTextBox.TabIndex = 19;
             // 
             // mileageTextBox
             // 
             mileageTextBox.Location = new Point(262, 325);
             mileageTextBox.Name = "mileageTextBox";
-            mileageTextBox.Size = new Size(100, 23);
+            mileageTextBox.Size = new Size(121, 23);
             mileageTextBox.TabIndex = 20;
             // 
             // fuelTypeDropDown
@@ -291,7 +291,7 @@
             // 
             colorTextBox.Location = new Point(262, 540);
             colorTextBox.Name = "colorTextBox";
-            colorTextBox.Size = new Size(100, 23);
+            colorTextBox.Size = new Size(121, 23);
             colorTextBox.TabIndex = 27;
             // 
             // label14
