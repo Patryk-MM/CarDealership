@@ -26,8 +26,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarDetailsForm));
             carNameLabel = new Label();
-            saveButton = new Button();
-            cancelButton = new Button();
             topPanel = new Panel();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -38,6 +36,8 @@
             detailsDataGrid = new DataGridView();
             reservationBindingSource = new BindingSource(components);
             label1 = new Label();
+            cancelButton = new Button();
+            saveButton = new Button();
             topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -57,28 +57,6 @@
             carNameLabel.Size = new Size(103, 35);
             carNameLabel.TabIndex = 0;
             carNameLabel.Text = "label1";
-            // 
-            // saveButton
-            // 
-            saveButton.Font = new Font("Segoe UI", 16F);
-            saveButton.Location = new Point(695, 783);
-            saveButton.Name = "saveButton";
-            saveButton.Size = new Size(126, 40);
-            saveButton.TabIndex = 21;
-            saveButton.Text = "Save";
-            saveButton.UseVisualStyleBackColor = true;
-            saveButton.Click += saveButton_Click;
-            // 
-            // cancelButton
-            // 
-            cancelButton.Font = new Font("Segoe UI", 16F);
-            cancelButton.Location = new Point(827, 783);
-            cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(126, 40);
-            cancelButton.TabIndex = 22;
-            cancelButton.Text = "Cancel";
-            cancelButton.UseVisualStyleBackColor = true;
-            cancelButton.Click += cancelButton_Click;
             // 
             // topPanel
             // 
@@ -143,6 +121,7 @@
             // 
             // optionComboBox
             // 
+            optionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             optionComboBox.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
             optionComboBox.FormattingEnabled = true;
             optionComboBox.Items.AddRange(new object[] { "Insurances", "Repairs", "Reservations" });
@@ -162,6 +141,7 @@
             detailsDataGrid.ReadOnly = true;
             detailsDataGrid.Size = new Size(907, 150);
             detailsDataGrid.TabIndex = 29;
+            detailsDataGrid.CellMouseDoubleClick += detailsDataGrid_CellMouseDoubleClick;
             // 
             // reservationBindingSource
             // 
@@ -178,18 +158,48 @@
             label1.TabIndex = 30;
             label1.Text = "Select an option to display:";
             // 
+            // cancelButton
+            // 
+            cancelButton.BackColor = Color.Transparent;
+            cancelButton.FlatAppearance.BorderSize = 0;
+            cancelButton.FlatAppearance.MouseOverBackColor = Color.MediumSlateBlue;
+            cancelButton.FlatStyle = FlatStyle.Flat;
+            cancelButton.Font = new Font("Tahoma", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            cancelButton.Location = new Point(737, 568);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(216, 78);
+            cancelButton.TabIndex = 60;
+            cancelButton.Text = "Cancel";
+            cancelButton.UseVisualStyleBackColor = false;
+            cancelButton.Click += cancelButton_Click;
+            // 
+            // saveButton
+            // 
+            saveButton.BackColor = Color.Transparent;
+            saveButton.FlatAppearance.BorderSize = 0;
+            saveButton.FlatAppearance.MouseOverBackColor = Color.MediumSlateBlue;
+            saveButton.FlatStyle = FlatStyle.Flat;
+            saveButton.Font = new Font("Tahoma", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            saveButton.Location = new Point(515, 568);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(216, 78);
+            saveButton.TabIndex = 61;
+            saveButton.Text = "Save";
+            saveButton.UseVisualStyleBackColor = false;
+            saveButton.Click += saveButton_Click;
+            // 
             // CarDetailsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 855);
+            ClientSize = new Size(1000, 667);
+            Controls.Add(saveButton);
+            Controls.Add(cancelButton);
             Controls.Add(label1);
             Controls.Add(detailsDataGrid);
             Controls.Add(optionComboBox);
             Controls.Add(carPropertyGrid);
             Controls.Add(topPanel);
-            Controls.Add(cancelButton);
-            Controls.Add(saveButton);
             Controls.Add(carNameLabel);
             FormBorderStyle = FormBorderStyle.None;
             Name = "CarDetailsForm";
@@ -208,8 +218,6 @@
         #endregion
 
         private Label carNameLabel;
-        private Button saveButton;
-        private Button cancelButton;
         private Panel topPanel;
         private PictureBox pictureBox2;
         private PictureBox exitPicture;
@@ -220,5 +228,7 @@
         private DataGridView detailsDataGrid;
         private BindingSource reservationBindingSource;
         private Label label1;
+        private Button cancelButton;
+        private Button saveButton;
     }
 }

@@ -13,11 +13,5 @@ namespace CarDealership {
         public ClientsForm() {
             InitializeComponent();
         }
-
-        private void carsChangeForm_Click(object sender, EventArgs e) {
-            this.Hide();    
-            CarsForm c = new CarsForm();
-            c.Show();
-        }
     }
 }

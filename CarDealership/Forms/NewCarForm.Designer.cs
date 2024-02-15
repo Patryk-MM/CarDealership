@@ -211,6 +211,7 @@
             yearTextBox.Name = "yearTextBox";
             yearTextBox.Size = new Size(121, 23);
             yearTextBox.TabIndex = 17;
+            yearTextBox.KeyPress += yearTextBox_KeyPress;
             // 
             // engineCapacityTextBox
             // 
@@ -218,6 +219,7 @@
             engineCapacityTextBox.Name = "engineCapacityTextBox";
             engineCapacityTextBox.Size = new Size(121, 23);
             engineCapacityTextBox.TabIndex = 18;
+            engineCapacityTextBox.KeyPress += engineCapacityTextBox_KeyPress;
             // 
             // powerTextBox
             // 
@@ -225,6 +227,7 @@
             powerTextBox.Name = "powerTextBox";
             powerTextBox.Size = new Size(121, 23);
             powerTextBox.TabIndex = 19;
+            powerTextBox.KeyPress += powerTextBox_KeyPress;
             // 
             // mileageTextBox
             // 
@@ -232,6 +235,7 @@
             mileageTextBox.Name = "mileageTextBox";
             mileageTextBox.Size = new Size(121, 23);
             mileageTextBox.TabIndex = 20;
+            mileageTextBox.KeyPress += mileageTextBox_KeyPress;
             // 
             // fuelTypeDropDown
             // 
@@ -320,9 +324,9 @@
             carNameLabel.ImageAlign = ContentAlignment.MiddleLeft;
             carNameLabel.Location = new Point(37, 47);
             carNameLabel.Name = "carNameLabel";
-            carNameLabel.Size = new Size(103, 35);
+            carNameLabel.Size = new Size(268, 35);
             carNameLabel.TabIndex = 32;
-            carNameLabel.Text = "label1";
+            carNameLabel.Text = "Adding a new car";
             // 
             // topPanel
             // 
@@ -333,6 +337,7 @@
             topPanel.Name = "topPanel";
             topPanel.Size = new Size(898, 33);
             topPanel.TabIndex = 33;
+            topPanel.MouseMove += topPanel_MouseMove;
             // 
             // exitPicture
             // 

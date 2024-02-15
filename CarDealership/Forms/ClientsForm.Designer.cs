@@ -46,7 +46,6 @@
             carsChangeForm.Size = new Size(54, 30);
             carsChangeForm.TabIndex = 23;
             carsChangeForm.Text = "Cars";
-            carsChangeForm.Click += carsChangeForm_Click;
             // 
             // Clients
             // 

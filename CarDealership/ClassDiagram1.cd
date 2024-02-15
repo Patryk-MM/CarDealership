@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CarDealership.Models.Car" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYCAAAAQAAAAAAABAQAAAAAIAAACAABEEgAgAABgAA=</HashCode>
+      <FileName>Models\Car.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.Models.Installment" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Installment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.Models.Insurance" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAACAAAAACAAAEgAAAgAAAAEAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Insurance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.Models.Reservation" Collapsed="true">
+    <Position X="11" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAEAAAIAAAAAAAAAAAAgAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Reservation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.Models.ServiceRepair" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAEAAAAABAAAAAAEAAAA=</HashCode>
+      <FileName>Models\ServiceRepair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.CarDetailsForm" Collapsed="true">
+    <Position X="4" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAJAAAAiQAAhAEAGKDwhDCAIAIiAAAEAAUQABQAAA=</HashCode>
+      <FileName>Forms\CarDetailsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.NewCarForm" Collapsed="true">
+    <Position X="8.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8wAIAAgCECQAgBBAAQiCDoADAAgICLCAgQAQQAEAAAA=</HashCode>
+      <FileName>Forms\NewCarForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.Forms.InstallmentsForm" Collapsed="true">
+    <Position X="10.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACEAAEACAACAQBACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\InstallmentsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.Forms.MainForm" Collapsed="true">
+    <Position X="6.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAAgAiAAABAAACiCAgSCIAAIABAAEAAAAQAQAAA=</HashCode>
+      <FileName>Forms\MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.Database" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAQAAAAAAEAAABAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.Program" Collapsed="true">
+    <Position X="8.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarDealership.Queries" Collapsed="true">
+    <Position X="6.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgAAABIAAAIBAAAAAAAAAAAAAAAGAgCABhAAAhAAAAA=</HashCode>
+      <FileName>Queries.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Forms.Form" Collapsed="true">
+    <Position X="7.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.EntityFrameworkCore.DbContext" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CarDealership.UserControls.UC_Cars" Collapsed="true">
+    <Position X="13" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>9oBAgBAqAChEAjMUACXpMwQSKAkgBqEFlBAIoAJOMRg=</HashCode>
+      <FileName>UserControls\UC_Cars.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Forms.UserControl" Collapsed="true">
+    <Position X="13" Y="5.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

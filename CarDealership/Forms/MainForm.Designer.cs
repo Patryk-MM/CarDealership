@@ -29,7 +29,6 @@
             pictureBox2 = new PictureBox();
             exitPicture = new PictureBox();
             panel2 = new Panel();
-            clientsChangeForm = new Button();
             carsChangeForm = new Button();
             panelContainer = new Panel();
             topPanel.SuspendLayout();
@@ -88,28 +87,12 @@
             // panel2
             // 
             panel2.BackColor = Color.SlateBlue;
-            panel2.Controls.Add(clientsChangeForm);
             panel2.Controls.Add(carsChangeForm);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 33);
             panel2.Name = "panel2";
             panel2.Size = new Size(1600, 78);
             panel2.TabIndex = 26;
-            // 
-            // clientsChangeForm
-            // 
-            clientsChangeForm.BackColor = Color.Transparent;
-            clientsChangeForm.FlatAppearance.BorderSize = 0;
-            clientsChangeForm.FlatAppearance.MouseOverBackColor = Color.MediumSlateBlue;
-            clientsChangeForm.FlatStyle = FlatStyle.Flat;
-            clientsChangeForm.Font = new Font("Tahoma", 24F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            clientsChangeForm.Location = new Point(189, 0);
-            clientsChangeForm.Name = "clientsChangeForm";
-            clientsChangeForm.Size = new Size(183, 78);
-            clientsChangeForm.TabIndex = 1;
-            clientsChangeForm.Text = "Clients";
-            clientsChangeForm.UseVisualStyleBackColor = false;
-            clientsChangeForm.Click += ClientsChangeForm_Click;
             // 
             // carsChangeForm
             // 
@@ -160,7 +143,6 @@
         private Button button1;
         private PictureBox exitPicture;
         private Button carsChangeForm;
-        private Button clientsChangeForm;
         private PictureBox pictureBox2;
         private Label label1;
     }

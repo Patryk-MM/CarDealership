@@ -88,11 +88,7 @@ namespace CarDealership {
         }
 
         private void cancelButton_Click(object sender, EventArgs e) {
-            //this.Hide();
-            //CarDetailsForm cd = new CarDetailsForm(car.CarID);
-            //cd.Show();
-            carPropertyGrid.SelectedObject = car;
-            carPropertyGrid.Refresh();
+            this.Hide();
         }
 
         private void CarDetailsForm_FormClosed(object sender, FormClosedEventArgs e) {
@@ -126,5 +122,11 @@ namespace CarDealership {
             }
         }
 
+        private void detailsDataGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
+            if(optionComboBox.Text == "Insurances" && e.ColumnIndex == 7) {
+                InstallmentsForm i = new(insurances[e.RowIndex].InsuranceID);
+                i.Show();
+            }
+        }
     }
 }

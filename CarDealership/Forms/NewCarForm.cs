@@ -13,9 +13,25 @@ using CsvHelper;
 using System.Globalization;
 using CsvHelper.Configuration;
 using CarDealership.Forms;
+using System.Runtime.InteropServices;
 
 namespace CarDealership {
     public partial class NewCarForm : Form {
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void topPanel_MouseMove(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Left) {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
 
         private Car? newCar = new();
         private List<Control> controls = new List<Control>();
@@ -32,15 +48,18 @@ namespace CarDealership {
             bool isNullPresent = false;
             foreach (TextBox textbox in textBoxes) {
                 if (textbox.Text == "" && isNullPresent == false) {
-                    MessageBox.Show("null");
+                    MessageBox.Show("There are empty fields in the form.");
                     isNullPresent = true;
+                    return;
                 }
             }
             foreach (ComboBox dropdown in dropDowns) {
                 if (dropdown.Text == "" && isNullPresent == false) {
-                    MessageBox.Show("comboBox null");
+                    MessageBox.Show("There are empty fields in the form.");
                     isNullPresent = true;
+                    return;
                 }
+                
             }
 
             if (!isNullPresent) {
@@ -103,6 +122,30 @@ namespace CarDealership {
 
         private void exitPicture_Click(object sender, EventArgs e) {
             Hide();
+        }
+
+        private void yearTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
+            }
+        }
+
+        private void engineCapacityTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
+            }
+        }
+
+        private void powerTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
+            }
+        }
+
+        private void mileageTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
+            }
         }
     }
 }

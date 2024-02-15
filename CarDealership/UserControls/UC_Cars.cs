@@ -223,7 +223,7 @@ namespace CarDealership.UserControls {
                 return;
             }
 
-            var confirmResult = MessageBox.Show("Are you sure to delete this item?", "Confirm Delete", MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show("Are you sure to delete selected records?", "Confirm Delete", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes) {
                 List<int> list = new();
                 for (int i = 0; i < selected.Count; i++) {
@@ -262,7 +262,8 @@ namespace CarDealership.UserControls {
         private void exportButton_Click(object sender, EventArgs e) {
             var selected = carsDataGrid.SelectedRows;
             if (selected.Count <= 0) {
-                MessageBox.Show("No records selected.");
+                MessageBox.Show("No records selected.")
+                    ;
                 return;
             }
 
@@ -288,9 +289,11 @@ namespace CarDealership.UserControls {
                                     csv.WriteRecords(list);
                                 }
                             }
+                            MessageBox.Show("Records have been exported.");
                         } catch (Exception ex) { MessageBox.Show($"{ex.Message}"); }
                     }
                 }
+                
             } else { return; }
         }
 
@@ -317,6 +320,8 @@ namespace CarDealership.UserControls {
                                             db.Add(record);
                                         }
                                         db.SaveChanges();
+                                        MessageBox.Show("Records have been imported.");
+                                        reloadGrid();
                                     }
                                 } else { return; }
                             }

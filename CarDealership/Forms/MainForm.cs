@@ -45,11 +45,6 @@ namespace CarDealership.Forms {
             addUserControl(uc);
         }
 
-        private void ClientsChangeForm_Click(object sender, EventArgs e) {
-            UC_Clients uc = new UC_Clients();
-            addUserControl(uc);
-        }
-
         private void exitPicture_Click(object sender, EventArgs e) {
             Close();
         }
